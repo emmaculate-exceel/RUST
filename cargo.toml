@@ -1,0 +1,48 @@
+[package]
+name = "teachlink-mobile-player"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+# Tauri for mobile/desktop
+tauri = { version = "2.1", features = ["mobile"] }
+tauri-plugin-network = "2.0"
+tauri-plugin-audio = "2.0"
+
+# Async runtime
+tokio = { version = "1.41", features = ["full"] }
+async-trait = "0.1"
+
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# Video processing (choose one based on needs)
+# gstreamer = "0.23"
+# ffmpeg-next = "7.0"
+
+# Network detection
+reqwest = { version = "0.12", features = ["json"] }
+network-interface = "2.1"
+
+# State management
+parking_lot = "0.12"
+dashmap = "6.1"
+
+# Error handling
+thiserror = "2.0"
+anyhow = "1.0"
+
+# Logging
+tracing = "0.1"
+tracing-subscriber = "0.3"
+
+[target.'cfg(target_os = "android")'.dependencies]
+jni = "0.21"
+
+[target.'cfg(target_os = "ios")'.dependencies]
+objc = "0.2"
+cocoa = "0.26"
+
+[build-dependencies]
+tauri-build = { version = "2.1", features = [] }
